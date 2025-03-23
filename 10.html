@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汉王扫描王v2.10.19 - 智能无广告扫描专家</title>
+    <meta name="description" content="官方推荐的免费扫描工具，支持文档/证件/表格精准识别，200+格式转换，无广告绿色便携">
+    <style>
+        :root {
+            --primary: #2196F3;
+            --secondary: #4CAF50;
+        }
+        * {
+            box-sizing: border-box;
+            font-family: '微软雅黑', 'Segoe UI', system-ui;
+            margin: 0;
+        }
+        body {
+            line-height: 1.6;
+            background: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        /* 科技感导航栏 */
+        header {
+            background: linear-gradient(135deg, #1976D2 0%, #2196F3 100%);
+            box-shadow: 0 4px 12px rgba(25, 118, 210, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav {
+            height: 80px;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+        }
+        .nav h1 {
+            color: white;
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        /* 主视觉区 */
+        .hero {
+            text-align: center;
+            padding: 6rem 0 4rem;
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            color: white;
+        }
+        .screenshot-container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 2rem auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .screenshot {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        /* 功能卡片 */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        /* 下载按钮区 */
+        .download-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e3f2fd 100%);
+        }
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .btn-download {
+            padding: 1.5rem 3rem;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 12px;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 16px rgba(33, 150, 243, 0.3);
+        }
+        .btn-download.secondary {
+            background: var(--secondary);
+            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
+        }
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+        }
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 0 1rem;
+                height: 60px;
+            }
+            .download-buttons {
+                flex-direction: column;
+            }
+            .btn-download {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+ .screenshot-container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 2rem auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            /* 新增响应式宽高比控制 */
+            position: relative;
+            padding-top: 56.25%; /* 16:9 比例 */
+        }
+
+        .screenshot {
+            /* 替换原有属性 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform 0.3s ease;
+            /* 添加加载优化 */
+            background: #f0f3f5;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 768px) {
+            .screenshot-container {
+                width: 95%;
+                margin: 1.5rem auto;
+                padding-top: 75%; /* 4:3 比例 */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .screenshot-container {
+                border-radius: 8px;
+                padding-top: 100%; /* 1:1 比例 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav container">
+            <h1>汉王扫描王</h1>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1 style="font-size: 2.8rem;margin-bottom:1.5rem">智能文档处理专家</h1>
+            <p style="font-size:1.3rem;opacity:0.9">113MB极简安装 | 无广告干扰 | 精准OCR识别</p>
+            <div class="screenshot-container">
+                <img src="hanwang.jpg" alt="汉王扫描王操作界面" class="screenshot">
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="features">
+            <div class="feature-card">
+                <h3>📄 全能扫描</h3>
+                <p>支持文档/证件/名片扫描，自动矫正边缘，生成高清电子件[2,4](@ref)</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔍 智能OCR</h3>
+                <p>识别中/英/日/韩等8国语言，印刷体识别率高达99%[3,5](@ref)</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔄 格式转换</h3>
+                <p>一键转换PDF/Word/Excel，支持批量处理与云同步[4,5](@ref)</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="download-section">
+        <div class="container">
+            <h2 style="font-size:2rem;margin-bottom:2rem">立即体验专业扫描</h2>
+            <div class="download-buttons">
+                <button class="btn-download" onclick="window.open('https://pan.baidu.com/s/1WzuD_-Xi8Q9stInfn_IUhw?pwd=ucni')">
+                    <span>⏬ 百度网盘下载</span>
+                    <small>v2.10.19.132 安卓版</small>
+                </button>
+                <button class="btn-download secondary" onclick="window.open('https://pan.quark.cn/s/4d5cd38e15f7')">
+                    <span>🚀 夸克网盘下载</span>
+                    <small>113MB 极速通道</small>
+                </button>
+            </div>
+            <p style="color:#666;margin-top:2rem">适用于 Android 8.0 及以上系统</p>
+        </div>
+    </section>
+
+    <footer style="background: #263238; color: white; padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <p>本站仅提供资源介绍下载及使用方法说明，我们尊重知识产权，呼吁大家共同维护良好的网络环境，合法使用软件。</p>
+            <p style="font-size:0.9em;margin-top:1rem">声明：本程序不收集用户数据，所有处理均在本地完成</p>
+        </div>
+    </footer>
+</body>
+</html>
